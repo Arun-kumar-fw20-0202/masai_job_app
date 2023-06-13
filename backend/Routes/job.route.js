@@ -15,13 +15,39 @@ jobRouter.post("/add", async (req, res) => {
 
 //READ
 jobRouter.get("/", async (req, res) => {
-  console.log(req.query);
-  let query = req.query;
+  let { role, language, limit, page, sort } = req.query;
+  let query = {};
+
+  if (role) {
+    query.role = role;
+  }
+
+  if (language) {
+    query.language = language;
+  }
+
+  let sortBy = {};
+
+  if (sort) {
+    if (sort == "asc") {
+      sortBy.postedAt = 1;
+    } else if (sort == "desc") {
+      sortBy.postedAt = -1;
+    } else {
+      sortBy = {};
+    }
+  }
+
   try {
-    const job = await jobModel.find(query);
+    const job = await JobModel.find(query)
+      .sort(sortBy)
+      .skip(limit * (page - 1))
+      .limit(limit);
+
     res.status(200).send(job);
-  } catch (error) {
-    res.status(400).send({ msg: error.message });
+  } catch (err) {
+    console.log(err);
+    res.status(400).send({ msg: err.message });
   }
 });
 

@@ -23,7 +23,7 @@ export const addJobSucess = (payload) => {
 export const getJob = (dispatch) => {
   dispatch(jobRequest());
   axios
-    .get("http://localhost:8080/job")
+    .get("https://nice-sneakers-slug.cyclic.app/job")
     .then((res) => {
       dispatch(getjobSuccess(res.data));
     })
@@ -37,7 +37,7 @@ export const getJob = (dispatch) => {
 export const addJob = (data) => (dispatch) => {
   //   dispatch(jobRequest());
   axios
-    .post(`http://localhost:8080/job/add`, data)
+    .post(`https://nice-sneakers-slug.cyclic.app/job/add`, data)
     .then((res) => {
       dispatch(addJobSucess(res.data));
       alert("Job Added");

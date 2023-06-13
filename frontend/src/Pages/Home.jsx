@@ -14,7 +14,7 @@ export const Home = () => {
   function getData() {
     setIsloading(true);
     axios
-      .get("http://localhost:8080/job")
+      .get("https://nice-sneakers-slug.cyclic.app/job")
       .then((res) => {
         setData(res.data);
         setIsloading(false);
