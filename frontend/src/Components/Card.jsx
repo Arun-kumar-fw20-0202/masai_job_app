@@ -26,7 +26,7 @@ export const JobCard = ({
 }) => {
   return (
     <>
-      <Flex align={"center"} justify={"center"} gap="30px" p="30px 20px">
+      <Flex align={"center"} justify={"center"} gap="30px" p="10px 20px">
         <Stack width="80%">
           <Card
             p="20px 30px"
