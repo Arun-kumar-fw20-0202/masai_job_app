@@ -40,7 +40,8 @@ export const addJob = (data) => (dispatch) => {
     .post(`http://localhost:8080/job/add`, data)
     .then((res) => {
       dispatch(addJobSucess(res.data));
-      console.log("job added successfully!!");
+      alert("Job Added");
+      window.location.href = "/";
     })
     .catch((err) => {
       //   dispatch(jobFailure());
